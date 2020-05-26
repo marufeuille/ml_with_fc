@@ -1,0 +1,24 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  fc_with_ml:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: This is fc_with_ml service
+    call_from_http:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Initializer: index.initializer
+        Runtime: python3
+        Timeout: 60
+        MemorySize: 512
+        CodeUri: ./code
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods:
+              - GET
+              - POST
