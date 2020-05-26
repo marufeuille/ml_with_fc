@@ -2,7 +2,7 @@
 code/.fun
 
 # for this project
-code/model/
+model/
 data/creditcard_train.csv
 data/creditcard_test.csv
 

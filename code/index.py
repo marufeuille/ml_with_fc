@@ -4,13 +4,16 @@ import logging
 import sklearn
 import pickle
 import json
+import os
+import urllib.request
 
-def initializer(environ):
-    pass
+def initializer(context):
+    global lr
+    url = os.environ["MODEL_URL"]
+    response = urllib.request.urlopen(url)
+    lr = pickle.loads(response.read())
 
 def handler(environ, start_response):
-    with open("./model/creditcard_fraud_detection_model.pkl", "rb") as f:
-        lr = pickle.load(f)
 
     request_method = environ['REQUEST_METHOD']
     try:

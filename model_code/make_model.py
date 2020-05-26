@@ -40,5 +40,5 @@ lr = LogisticRegression(
     solver='liblinear'
 ).fit(X_train, y_train)
 
-with open("../code/model/creditcard_fraud_detection_model.pkl", "wb") as f:
+with open("../model/creditcard_fraud_detection_model.pkl", "wb") as f:
     pickle.dump(lr, f)
